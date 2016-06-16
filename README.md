@@ -55,7 +55,8 @@ console.log(index.searchIndex('rudyard'));
 ```
 *The result of this would be:*
 ```javaScript
-[ 'rudyard : 2 : 1' ]```
+[ 'rudyard : 2 : 1' ]
+```
 
 ```javaScript
 console.log(index.searchIndex('astronomy'));
