@@ -5,7 +5,6 @@
  * version 1.1
  */
 
-
 'use strict';
 
 // Import the file reader
@@ -15,24 +14,23 @@ class Index {
 
   // Method to create an Index
   createIndex(filePath) {
-
     this.books = JSON.parse(fs.readFileSync(filePath));
-
     this.indexArray = [];
 
-
-    // For each document, turn to string, lowercase, remove special characters
-    // and trim beginning of line spaces.
-
-    // Use forEach to iterate through each document obtaining its position in the document.
+    /* For each document, turn to string, lowercase, remove special characters
+     * and trim beginning of line spaces.
+     Use forEach to iterate through each document obtaining its position in the document.
+     */
     this.books.forEach((book, docIndex) => {
 
-      var bookObjectString = JSON.stringify(book).toLowerCase().replace(/\W/g, ' ').replace(/\s+/g, ' ').trim();
+      var bookObjectString = JSON.stringify(book).toLowerCase()
+      .replace(/\W/g, ' ').replace(/\s+/g, ' ')
+      .trim();
 
       // Concatenate document and split at space to form individual words.
       // Map each word to its position in the document
-      this.indexArray = this.indexArray.concat(bookObjectString.split(' ').map((word, wordIndex) => {
-
+      this.indexArray = this.indexArray.concat(bookObjectString
+        .split(' ').map((word, wordIndex) => {
         return (word + ' : ' + docIndex + ' : ' + wordIndex);
 
       }));
@@ -60,6 +58,7 @@ class Index {
 
           // if a true boolean is returned, wordStatistics is added to results array
           return wordToSearch.test(wordStatistics);
+
         });
 
         if (results.length === 0) {
@@ -75,7 +74,9 @@ class Index {
     } catch (error) {
       return error;
     }
+
   }
+
 }
 
 var index = new Index();
