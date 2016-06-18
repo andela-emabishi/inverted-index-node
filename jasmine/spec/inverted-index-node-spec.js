@@ -1,4 +1,4 @@
-var Index = require('../src/inverted-index');
+var Index = require('../src/inverted-index-node');
 var index = new Index();
 
 
@@ -25,13 +25,13 @@ describe("Index", function(){
 		})
 
 		it("verifies the index maps words to the correct objects in the JSON ", function (){
-			expect(index.indexArray).toEqual(['testing : 0 : 0','test : 0 : 1']);
+			expect(index.indexArray).toEqual([ 'testing : 0 : 0', 'test : 0 : 1', 'testing : 1 : 0', 'test : 1 : 1', 'again : 1 : 2' ]);
 		});
 	});
 
 	describe("Search Index", function(){
 		it("verifies that searching the Index returns the correct results", function () {
-			expect(index.searchIndex('testing')).toEqual(['testing : 0 : 0']);
+			expect(index.searchIndex('testing')).toEqual(['testing : 0 : 0','testing : 1 : 0']);
 		});
 
 		it("verifies search index returns correct position", function () {
